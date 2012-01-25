@@ -1,0 +1,27 @@
+<ul id="info">
+    <h2>Cargando datos en un formulario desde el controlador (2)</h2>
+    <br/>
+    <?php echo Form::open(); //para el ejemplo no es necesario el form::open porque no se va a enviar el form ?>
+    <label>Nombres 
+        <?php echo Form::text('form.nombres'); ?>
+    </label><br/>
+    <label>Edad 
+        <?php echo Form::text('form.edad'); ?>
+    </label><br/>
+    <label>Sexo  
+        <?php echo Form::select('form.sexo', array('' => 'Seleccione','M' => 'Masculino', 'F' => 'Femenino')); ?>
+    </label><br/>
+    <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>
+    <br/>
+    <?php echo Form::open(); //para el ejemplo no es necesario el form::open porque no se va a enviar el form ?>
+    <label>Nombres 
+        <?php echo Form::text('otro_form.nombres'); ?>
+    </label><br/>
+    <label>Edad 
+        <?php echo Form::text('otro_form.edad'); ?>
+    </label><br/>
+    <label>Sexo  
+        <?php echo Form::select('otro_form.sexo', array('' => 'Seleccione','M' => 'Masculino', 'F' => 'Femenino')); ?>
+    </label><br/>
+    <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>
+</ul>
