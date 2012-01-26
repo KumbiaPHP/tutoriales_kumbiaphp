@@ -8,7 +8,7 @@ class ModelosController extends AppController {
         
     }
     
-    public function usos_callback_1(){
+    public function validaciones_1(){
         if ( Input::hasPost('array_formulario') ){
             $model = new Menu(Input::post('array_formulario'));
 
