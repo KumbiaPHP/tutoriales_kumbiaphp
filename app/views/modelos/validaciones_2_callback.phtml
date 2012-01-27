@@ -1,0 +1,16 @@
+<div id="info">
+    <h1>Ejemplo de Validaciones de Datos y uso de Callbacks en los Modelos</h1>
+    <?php View::content(); ?>
+    <?php echo Form::open(); ?>
+    <dl>
+        <dt>Login *</dt>
+        <dd><?php echo Form::text('form.login'); ?></dd>
+        <dt>Clave * (entre 3 y 10 caracteres)</dt>
+        <dd><?php echo Form::pass('form.clave'); ?></dd>
+        <dt>Repetir Clave *</dt>
+        <dd><?php echo Form::pass('form.clave2'); ?></dd>
+        <dt>&nbsp;</dt>
+        <dd><?php echo Form::submit('Enviar Formulario'); ?></dd>
+    </dl>
+    <?php echo Form::close(); ?>
+</div>
