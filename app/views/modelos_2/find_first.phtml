@@ -1,0 +1,34 @@
+<div id="info">
+    <h1>Ejemplo de Uso del metodo find_first de active record</h1>
+    <br/>
+    <?php if ($resultado): ?>DATOS DEL PRIMER REGITRO EN LA TABLA MENU <small> $this->resultado = Load::model('menu')->find_first();</small>
+    <br/>
+        <ul>
+            <li>ID: <?php eh($resultado->id)// eh() metodo que hace un echo y un htmlespecialchart de una cadena  ?></li>
+            <li>NOMBRE: <?php eh($resultado->nombre)// tambien existe el metodo h() que hace el htmlespecialchart pero sin echo  ?></li>
+            <li>URL: <?php eh($resultado->url) ?></li>
+            <li>ESTADO: <?php eh($resultado->getEstado()) ?></li>
+        </ul>
+    <?php else: ?>
+            No hay registros...!!!
+    <?php endif; ?>
+            <br/>
+    <?php if ($usuario): ?>DATOS DEL PRIMER REGITRO EN LA TABLA USUARIOS <small>this->usuario =$usr->find_first(1);</small>
+                <ul>
+                    <li>ID: <?php eh($usuario->id)// eh() metodo que hace un echo y un htmlespecialchart de una cadena  ?></li>
+                    <li>LOGIN: <?php eh($usuario->login)// tambien existe el metodo h() que hace el htmlespecialchart pero sin echo  ?></li>
+                    <li>CLAVE: <?php eh($usuario->clave) ?></li>
+                    <li>ESTADO: <?php eh($usuario->activo) ?></li>
+                </ul>
+    <?php else: ?>
+                    No hay registros...!!!
+    <?php endif; ?>
+                    <br/>
+    <?php if ($menu): ?>DATOS DEL ULTIMO REGITRO EN LA TABLA MENU <small>$this->menu = $menu->find_first('activo = 1','order: id DESC');</small>
+    <ul>
+        <li><?php echo $menu->inspect(); //el metodo inspect() de active record devuelve los nombres de campos y valores de un registro ?></li>
+    </ul>
+    <?php else: ?>
+                            No hay registros...!!!
+    <?php endif; ?>
+</div>
