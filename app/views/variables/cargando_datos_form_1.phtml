@@ -1,4 +1,4 @@
-<ul id="info">
+<div id="info">
     <h2>Cargando datos en un formulario desde el controlador (1)</h2>
     <br/>
     <?php echo Form::open(); //para el ejemplo no es necesario el form::open porque no se va a enviar el form ?>
@@ -12,4 +12,49 @@
         <?php echo Form::select('sexo', array('' => 'Seleccione','M' => 'Masculino', 'F' => 'Femenino')); ?>
     </label><br/>
     <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>
-</ul>
+    <hr/>
+    <h3>URL de Ejemplo</h3>
+    <pre class="prettyprint">
+        http://localhost/tutoriales_kumbiaphp/variables/cargando_datos_form_1/
+        partes de la url:
+        dominio =  http://localhost/tutoriales_kumbiaphp/
+        controlador = variables
+        accion = cargando_datos_form_1
+        parametros = no tiene</pre>
+    <h3>Controlador</h3>
+    <pre class="prettyprint">
+class VariablesController extends AppController {
+
+    public function cargando_datos_form_1(){
+        //en la vista tenemos un formulario con dos cajas
+        //de texto y un select.
+        //la primera jaca de texto tiene como atributo name="nombres"
+        //la segunda es edad y el select se llama sexo.
+        //al pasar variables desde los controladores a la vista
+        //con nombres de variable igual a algun atributo name de algun input
+        //ó select u otro, estos se cargan con el valor de dicha variable.
+        $this->nombres = 'Manuel Aguirre'; //en la vista hay un input de tipo texto con
+        // name="nombres" , y desde el controlador le estamos dando valor a dicho input
+        $this->edad = 23; //lo mismo para el input con name="edad"
+        $this->sexo = 'M'; //una de las opciones del select con name="sexo"
+        //tiene como valor 'M', y esa será la opcion que aparecerá seleccionada
+        //al mostrar la vista en el navegador 
+    }
+}</pre>
+    <h3>Vista</h3>
+    <pre class="prettyprint">
+    <?php eh('<h2>Cargando datos en un formulario desde el controlador (1)</h2>
+    <br/>
+    <?php echo Form::open(); //para el ejemplo no es necesario el form::open porque no se va a enviar el form ?>
+    <label>Nombres
+        <?php echo Form::text(\'nombres\'); ?>
+    </label><br/>
+    <label>Edad
+        <?php echo Form::text(\'edad\'); ?>
+    </label><br/>
+    <label>Sexo
+        <?php echo Form::select(\'sexo\', array(\'\' => \'Seleccione\',\'M\' => \'Masculino\', \'F\' => \'Femenino\')); ?>
+    </label><br/>
+    <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>'); ?>
+    </pre>
+</div>

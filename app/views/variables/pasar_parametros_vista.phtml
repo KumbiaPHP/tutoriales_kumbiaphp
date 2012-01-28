@@ -5,4 +5,35 @@
         <li>La variable <b>nombre</b> tiene el valor: <?php echo $nombre ?></li>
         <li>La variable <b>fecha_de_hoy</b> tiene el valor: <?php echo $edad ?></li>
     </ul>
+    <hr/>
+    <h3>URL de Ejemplo</h3>
+    <pre class="prettyprint">
+        http://localhost/tutoriales_kumbiaphp/variables/pasar_parametros_vista/manuel/23/
+        partes de la url:
+        dominio =  http://localhost/tutoriales_kumbiaphp/
+        controlador = variables
+        accion = pasar_parametros_vista
+        parametros = manuel y 23</pre>
+    <h3>Controlador</h3>
+    <pre class="prettyprint">
+class VariablesController extends AppController {
+
+    public function pasar_parametros_vista($param_nombre, $edad) {
+        //tambien es posible pasar los parametros que recibimos
+        //en la acción a la vista.
+        $this->nombre = $param_nombre;
+        $this->edad = $edad;
+        //solo debemos crear variables de instancia y pasarle los valores
+        //de los parametros a las mismas.
+    }
+}</pre>
+    <h3>Vista</h3>
+    <pre class="prettyprint">
+    <?php eh('<ul>
+        <h2>Pasando Parametros de una Acción del Controlador a la Vista</h2>
+        <br/>
+        <li>La variable <b>nombre</b> tiene el valor: <?php echo $nombre ?></li>
+        <li>La variable <b>fecha_de_hoy</b> tiene el valor: <?php echo $edad ?></li>
+    </ul>'); ?>
+    </pre>
 </div>

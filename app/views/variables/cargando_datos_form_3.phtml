@@ -12,4 +12,46 @@
         <?php echo Form::select('form.sexo', array('' => 'Seleccione','M' => 'Masculino', 'F' => 'Femenino')); ?>
     </label><br/>
     <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>
+    <hr/>
+    <h3>URL de Ejemplo</h3>
+    <pre class="prettyprint">
+        http://localhost/tutoriales_kumbiaphp/variables/cargando_datos_form_3/
+        partes de la url:
+        dominio =  http://localhost/tutoriales_kumbiaphp/
+        controlador = variables
+        accion = cargando_datos_form_3
+        parametros = no tiene</pre>
+    <h3>Controlador</h3>
+    <pre class="prettyprint">
+class VariablesController extends AppController {
+
+    public function cargando_datos_form_3(){
+        //ademas de arreglos se le pueden pasar objetos,
+        //donde los atributos ó variables de instancia del mismo
+        //representan los campos del formulario.
+        //<?php eh('<input name="form[nombres]" ... />
+        //<select name="form[sexo]" ... />, etc.'); ?>
+
+
+        $this->form->nombres = 'Manuel Aguirre';
+        $this->form->edad = 23;
+        $this->form->sexo = 'M';
+    }
+}</pre>
+    <h3>Vista</h3>
+    <pre class="prettyprint">
+    <?php eh('<h2>Cargando datos en un formulario desde el controlador (2)</h2>
+    <br/>
+    <?php echo Form::open(); //para el ejemplo no es necesario el form::open porque no se va a enviar el form ?>
+    <label>Nombres
+        <?php echo Form::text(\'form.nombres\'); ?>
+    </label><br/>
+    <label>Edad
+        <?php echo Form::text(\'form.edad\'); ?>
+    </label><br/>
+    <label>Sexo
+        <?php echo Form::select(\'form.sexo\', array(\'\' => \'Seleccione\',\'M\' => \'Masculino\', \'F\' => \'Femenino\')); ?>
+    </label><br/>
+    <?php echo Form::close(); //para el ejemplo no es necesario el form::close porque no se va a enviar el form ?>'); ?>
+    </pre>
 </ul>

@@ -1,19 +1,51 @@
 <div id="info">
-    
-<ul>
-<h2>Pasando Datos del Controlador a la Vista</h2>
-<br/>
-<p>
-    <li>La variable <b>nombre</b> tiene el valor: <?php echo $nombre ?></li>
-    <li>La variable <b>fecha_de_hoy</b> tiene el valor: <?php echo $fecha_de_hoy ?></li>
-    <li>La variable <b>variable_local</b> no existe aquí.</li>
-</ul>
-</p>
-<br/>
-<br/>
-<p>
-    En este ejemplo la variable $nombre es la variable que hemos pasado como<br/>
-    atributo del controlador ( $this->nombre ).<br/>
-    Los mismo para la variable Edad.
-</p>
+    <ul>
+        <h2>Pasando Datos del Controlador a la Vista</h2>
+        <br/>
+        <p>
+        <li>La variable <b>nombre</b> tiene el valor: <?php echo $nombre ?></li>
+        <li>La variable <b>fecha_de_hoy</b> tiene el valor: <?php echo $fecha_de_hoy ?></li>
+        <li>La variable <b>variable_local</b> no existe aquí.</li>
+    </ul>
+    <hr/>
+    <h3>URL de Ejemplo</h3>
+    <pre class="prettyprint">
+        http://localhost/tutoriales_kumbiaphp/variables/pasar_variable_vista/
+        partes de la url:
+        dominio =  http://localhost/tutoriales_kumbiaphp/
+        controlador = variables
+        accion = pasar_parametros_vista
+        parametros = no tiene</pre>
+    <h3>Controlador</h3>
+    <pre class="prettyprint">
+class VariablesController extends AppController {
+
+    public function pasar_variable_vista() {
+        //para pasar un dato del controlador a la vista
+        //solo debe guardarse dicho dato en una variable de instancia del
+        //controlador ( atributo ), y automaticamente esa variable se
+        //podrá usar en la vista y contendrá el dato que se le asignó
+        //en el controlador.
+        $this->nombre = 'Manuel José'; //nombre es un atributo del controlador
+        //que se está creando dinamicamente (no hay limites en la creacion de
+        //atributos dinamicos en los controladores).
+        $this->fecha_de_hoy = date('d-m-Y'); //otra variable de instancia
+
+        $variable_local = $this->nombre . ' ' . $this->fecha_de_hoy;
+        //esta ultima variable ($variable_local) es local al metodo, es decir,
+        //no podrá ser accedida fuera de este metodo, y desaparecerá
+        //al terminar la ejecucion de esta acción.
+    }
+}</pre>
+    <h3>Vista</h3>
+    <pre class="prettyprint">
+    <?php eh('<ul>
+        <h2>Pasando Datos del Controlador a la Vista</h2>
+        <br/>
+        <p>
+        <li>La variable <b>nombre</b> tiene el valor: <?php echo $nombre ?></li>
+        <li>La variable <b>fecha_de_hoy</b> tiene el valor: <?php echo $fecha_de_hoy ?></li>
+        <li>La variable <b>variable_local</b> no existe aquí.</li>
+    </ul>'); ?>
+    </pre>
 </div>
