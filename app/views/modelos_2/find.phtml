@@ -27,6 +27,81 @@
                 No hay menus en la BD...!!!
                     </div>
     <?php endif; ?>
+    <hr/>
+    <h3>URL de Ejemplo</h3>
+    <pre class="prettyprint">
+        http://localhost/tutoriales_kumbiaphp/modelos_2/find/
+        partes de la url:
+        dominio =  http://localhost/tutoriales_kumbiaphp/
+        controlador = modelos_2
+        accion = find
+        parametros = no tiene</pre>
+    <h3>Controlador</h3>
+    <pre class="prettyprint">
+class Modelos2Controller extends AppController {
+
+    public function find(){
+        /**
+         * el metodo find devuelve siempre un array de objetos active record
+         * @example:
+         *
+         * array(
+         *      0 => $modelo_registro_0,
+         *      1 => $modelo_registro_1,
+         *      2 => $modelo_registro_2,
+         *      ....
+         *      n => $modelo_registro_n,
+         * )
+         *
+         * Cuando se le pasa un numero como unico parametro al find,
+         * este busca por la clave primaria y
+         * no es un arreglo lo que el metodo devuelve, sino el objeto como tal,
+         * es lo mismo que hacer un find_first, aunque es mejor usar este ultimo
+         * al saber que se va a devolver un unico registro.
+         *
+         */
+        $this->resultado = Load::model('menu')->find();
+    }
+}</pre>
+    <h3>Modelo</h3>
+    <pre class="prettyprint">
+class Menu extends ActiveRecord {
+
+    public function getEstado() {
+        return $this->activo ? 'Activo' : 'Inactivo';
+    }
+}</pre>
+    <h3>Vista</h3>
+    <pre class="prettyprint">
+    <?php eh('<h1>Ejemplo de Uso del metodo find de active record</h1>
+    <br/>
+    <?php if ($resultado): ?>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Menú</th>
+                    <th>URL del Menú</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($resultado as $modelo): ?>
+                <tr>
+                    <td><?php echo $modelo->id ?></td>
+                    <td><?php echo $modelo->nombre ?></td>
+                    <td><?php echo $modelo->url ?></td>
+                    <td><?php echo $modelo->getEstado() ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+                    <div>
+                No hay menus en la BD...!!!
+                    </div>
+    <?php endif; ?>'); ?>
+    </pre>
 </div>
 <style>
     th{
