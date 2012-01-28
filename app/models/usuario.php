@@ -31,7 +31,7 @@ class Usuario extends ActiveRecord {
     }
 
     protected function after_create() {
-        Flash::valid("El Usuario $this->nombre fué creado exitosamente...!!!");
+        Flash::valid("El Usuario $this->login fué creado exitosamente...!!!");
     }
 
 }
