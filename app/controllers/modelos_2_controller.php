@@ -1,6 +1,6 @@
 <?php
 
-class Modelos_2Controller extends AppController {
+class Modelos2Controller extends AppController {
 
     public function index() {
         
