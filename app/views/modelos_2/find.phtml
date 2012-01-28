@@ -1,0 +1,42 @@
+<div id="info">
+    <h1>Ejemplo de Uso del metodo find de active record</h1>
+    <br/>
+    <?php if ($resultado): ?>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Menú</th>
+                    <th>URL del Menú</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($resultado as $modelo): ?>
+                <tr>
+                    <td><?php echo $modelo->id ?></td>
+                    <td><?php echo $modelo->nombre ?></td>
+                    <td><?php echo $modelo->url ?></td>
+                    <td><?php echo $modelo->getEstado() ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+                    <div>
+                No hay menus en la BD...!!!
+                    </div>
+    <?php endif; ?>
+</div>
+<style>
+    th{
+        padding: 3px 10px 3px 10px;
+    }
+    table{
+        margin: 0 auto;
+    }
+    td{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+</style>
