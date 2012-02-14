@@ -1,0 +1,13 @@
+<?php
+// Si poseemos una identidad guardada el mostramos los datos sino vamos al 
+// link para dar permisos para que nuestra aplicacion puede publicar los Tweet
+if ($twitterdata):
+?>
+<h3>Tu cuenta en Twitter</h3>
+    <img src="<?php echo $twitterdata['image']; ?>" style="float:left; margin-right: 5px;"><br/>
+    <a href="<?php echo $twitterdata['profile']; ?>" target="_blank">Ver Perfil</a><br/>
+    <a href="<?php echo PUBLIC_PATH; ?>redes/desasociar/">Desasociar Cuenta</a><br/>
+    <a href="<?php echo PUBLIC_PATH; ?>redes/tweet/">Envia un Tweet</a>
+<?php else: ?>
+    Asociar cuenta de Twitter: <a href="<?php echo $Twitter ?>">Login</a>
+<?php endif; ?>

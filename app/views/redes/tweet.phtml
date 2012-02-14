@@ -1,0 +1,11 @@
+<h3>Envia tu Tweet:</h3>
+<?php 
+View::content();
+
+echo Form::open();
+echo Form::text('tweet', 'maxlenght="140"') .' <br />';
+echo Form::submit("Publicar");
+
+echo Form::close();
+
+?>
