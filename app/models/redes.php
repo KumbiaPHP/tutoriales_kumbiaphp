@@ -12,7 +12,7 @@
  * Modelo con 2 metodos uno para obtener una identidad guardada en BBDD y otra 
  * para guardar una identidad, "simple"
  */
-class usuarios extends ActiveRecord {
+class redes extends ActiveRecord {
 
     function getTwitter() {
         $r = $this->find('1');
