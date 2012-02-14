@@ -19,8 +19,6 @@ class RedesController extends AppController {
      * 
      */
     public function index() {
-        // Cargamos modelo para obtener datos de la BBDD
-        $red = Load::model('usuarios');
 
         // Leemos del Archivo de configuración el consumerkey y el consumersecret
         // de nuestra aplicación twitter
@@ -29,7 +27,7 @@ class RedesController extends AppController {
         $consumer_secret = $config['twitter']['consumersecret'];
 
         // Verificamos que tengamos una sesión guardada de usuario Twitter
-        $this->twitterdata = $red->gettwitter();
+        $this->twitterdata = Load::model('redes')->gettwitter();
 
         // Verificamos que no existe ninguna sesión guardada
         if (!$this->twitterdata) {
@@ -164,7 +162,7 @@ class RedesController extends AppController {
             $config = Config::read('apis', TRUE);
             $consumer_key = $config['twitter']['consumerkey'];
             $consumer_secret = $config['twitter']['consumersecret'];
-            $user = Load::model('usuarios')->gettwitter();
+            $user = Load::model('redes')->gettwitter();
             $tweet = Input::post('tweet');
 
             // Cargamos las librerias necesarias
@@ -199,7 +197,7 @@ class RedesController extends AppController {
      * 
      */
     public function desasociar() {
-        Load::model('usuarios')->setTwitter();
+        Load::model('redes')->setTwitter();
         Router::redirect('redes/');
     }
 
